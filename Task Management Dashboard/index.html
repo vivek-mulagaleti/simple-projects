@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task Management Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="hero">
+        <div class="heading">
+            <h2>My Tasks</h2>
+            <p>Organize Your daily works</p>
+        </div>
+
+        <div class="count">
+
+            <div class="displayTotal">
+                <h3>Total</h3>
+                <h2 class="js-total-tasks"></h2>
+            </div>
+
+            <div class="displayCompleted">
+                <h3>Completed</h3>
+                <h2 class="js-total-completed"></h2>
+            </div>
+
+            <div class="displayPending">
+                <h3>Pending</h3>
+                <h2 class="js-total-pending"></h2>
+            </div>
+
+        </div>
+
+        <div class="task-adding-setction">
+            <input type="text" name="newTask" id="newTask" placeholder="Enter a new task">
+
+            <select name="priority" id="priority">
+                <option value="Low priority">Low priority</option>
+                <option value="Medium priority">Medium priority</option>
+                <option value="High priority">High priority</option>
+            </select>
+
+            <button class="js-add-button">+ Add task</button>
+        </div>
+    </div>
+
+    <div class="project-display-section">
+        <div class="project-status">
+            <button class="js-all">All</button>
+            <button class="js-pending">Pending</button>
+            <button class="js-completed">Completed</button>
+        </div>
+
+        <div class="js-projects-display">
+
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+
+</body>
+</html>

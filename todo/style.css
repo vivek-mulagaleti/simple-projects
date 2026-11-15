@@ -1,0 +1,58 @@
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #ffffff;
+    text-align: center;
+    padding: 30px;
+}
+
+p {
+    font-size: 25px;
+    font-weight: bold;
+    color: #333;
+}
+
+input {
+    padding: 12px;
+    margin: 5px;
+    border: 1px solid #ccc;
+    border-radius: 25px;
+    font-size: 15px;
+    background-color: transparent;
+}
+
+button {
+    padding: 12px 20px;
+    background-color: #000000;
+    color: white;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+}
+
+button:hover {
+    opacity: 0.8;
+    box-shadow: 5px 3px 5px #ddd;
+}
+
+.js-todoList {
+    max-width: 650px;
+    margin: 30px auto;
+}
+
+.todo-item {
+    display: grid;
+    grid-template-columns: 2fr 1fr 100px;
+    align-items: center;
+    gap: 15px;
+    background-color: white;
+    padding: 15px;
+    margin-bottom: 10px;
+    border-radius: 30px;
+    text-align: left;
+    box-shadow: 0 2px 5px #ddd;
+}
+
+.todo-item button {
+    background-color: #ef4444;
+}

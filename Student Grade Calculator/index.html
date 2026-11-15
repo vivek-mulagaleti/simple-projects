@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Grade Calculator</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <h1>Add Your Grade</h1>
+    <h4>Student name</h4>
+    <input type="text" name="studentName" id="studentName" placeholder="Enter student name">
+    <br>
+    <div id="studentMarks">
+        <p>Subject1</p>
+        <input type="text" name="subject1" id="subject1" placeholder="Ex:80">
+
+        <p>Subject2</p>
+        <input type="text" name="subject2" id="subject2" placeholder="Ex:80">
+
+        <p>Subject3</p>
+        <input type="text" name="subject3" id="subject3" placeholder="Ex:80">
+
+        <p>Subject4</p>
+        <input type="text" name="subject4" id="subject4" placeholder="Ex:80">
+
+        <p>Subject5</p>
+        <input type="text" name="subject5" id="subject5" placeholder="Ex:80">
+
+    </div>
+    <button onclick="add()">Add Grade</button>
+
+    <div id="studentsList"></div>
+
+    <script>
+        const students = []
+        function add() {
+            const name=document.querySelector('#studentName').value;
+            const subject1 = Number(document.querySelector('#subject1').value);
+            const grade1= subject1>=35 ? 'pass':'fail';
+
+            const subject2 = Number(document.querySelector('#subject2').value);
+            const grade2= subject2>=35 ? 'pass':'fail';
+
+            const subject3 = Number(document.querySelector('#subject3').value);
+            const grade3= subject3>=35 ? 'pass':'fail';
+
+            const subject4 = Number(document.querySelector('#subject4').value);
+            const grade4= subject4>=35 ? 'pass':'fail';
+
+            const subject5 = Number(document.querySelector('#subject5').value);
+            const grade5= subject5>=35 ? 'pass':'fail';
+
+            document.querySelector('#subject1').value = '';
+            document.querySelector('#subject2').value = '';
+            document.querySelector('#subject3').value = '';
+            document.querySelector('#subject4').value = '';
+            document.querySelector('#subject5').value = '';
+            document.querySelector('#studentName').value='';
+
+            let total=subject1+subject2+subject3+subject4+subject5;
+            students.push({
+                name: name,
+                marks: [
+                    {
+                        mark: subject1,  
+                        grade: grade1,
+                    },
+                    {
+                        mark: subject2,
+                        grade: grade2,
+                    },
+                    {
+                        mark: subject3,
+                        grade: grade3,
+                    },
+                    {
+                        mark: subject4,
+                        grade: grade4,
+                    },
+                    {
+                        mark: subject5,
+                        grade: grade5,
+                    }
+                    
+                ],
+                total: total,
+            });
+
+            students.forEach((student)=>{
+                let fail=0;
+                student.marks.forEach((markk)=>{
+                    if(markk.grade==='fail'){
+                        fail++;
+                    }
+                })
+                if(fail==0){
+                    student.result='pass'
+                }
+                else{
+                    student.result='fail'
+                }
+            });
+
+            display();
+
+        }
+
+        function display() {
+            let detailsList = '';
+            students.forEach(
+                (student) => {
+                    detailsList += `<div class="student-card">
+                    <p>student name:${student.name}</p>
+                            `
+                    student.marks.forEach((markk,index) => {
+                        detailsList += `<p>subject ${index+1} :${markk.mark}</p>
+                            <p>grade:${markk.grade}</p>`;
+                    });
+
+                    detailsList+=`total=${student.total}/500 
+                    result:${student.result}
+                    </div>`;
+                }
+            );
+            document.querySelector('#studentsList').innerHTML = detailsList;
+        }
+
+    </script>
+</body>
+
+</html>

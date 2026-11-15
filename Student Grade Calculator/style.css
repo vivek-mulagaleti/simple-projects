@@ -1,0 +1,87 @@
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f6f9;
+    text-align: center;
+    padding: 20px;
+}
+
+h1 {
+    color: #333;
+}
+
+input {
+    padding: 10px;
+    margin: 8px;
+    width: 220px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+button {
+    padding: 12px 25px;
+    background-color: #2563eb;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 15px;
+}
+
+button:hover {
+    background-color: #1d4ed8;
+}
+
+#studentMarks {
+    background-color: white;
+    padding: 20px;
+    max-width: 350px;
+    margin: auto;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px #ddd;
+}
+
+#studentMarks p {
+    margin-bottom: 0;
+}
+
+#studentsList {
+    background-color: white;
+    max-width: 350px;
+    margin: 20px auto;
+    padding: 15px;
+    border-radius: 10px;
+    text-align: left;
+}
+
+
+#studentsList {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    max-width: 1200px;
+    margin: 30px auto;
+    padding: 10px;
+    background: transparent;
+}
+
+.student-card {
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px #ddd;
+    margin: 0;
+    text-align: left;
+}
+
+@media (max-width: 900px) {
+    #studentsList {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 600px) {
+    #studentsList {
+        grid-template-columns: 1fr;
+    }
+}
