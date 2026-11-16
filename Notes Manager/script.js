@@ -13,16 +13,38 @@ deleteBtn.addEventListener('click',(event)=>{
     }
 })
 
-const continer=document.querySelector('#js-add-note-btn');
+const continer=document.querySelector('.js-notes-display');
 continer.addEventListener('click',(event)=>{
     if(event.target.className==='js-edit-btn'){
-        
+        const card = event.target.closest(".note-card");
+        const edit=card.querySelector(".edit-section");
+        edit.hidden=false;
+        edit.innerHTML=`<input type="text" name="js-edit-text" id="js-edit-text">
+                    <button class="js-submit-btn" data-index="${event.target.dataset.index}">Submit</button>
+        `
     }
 });
 
+continer.addEventListener('click',(event)=>{
+    if(event.target.className==='js-submit-btn'){
+        const submitBtn=document.querySelector('#js-submit-btn');
+        editTask();
+    }
+})
+
+
+function editTask(){
+    const submitBtn=document.querySelector('.js-submit-btn');
+    const editNotes=document.querySelector('#js-edit-text');
+    notes[submitBtn.dataset.index].description=editNotes.value;
+    localStorage.setItem('notesList', JSON.stringify(notes));
+    displayCount();
+    displayNotes();
+}
 
 function deleteTask(index){
     notes.splice(index,1);
+    localStorage.setItem('notesList', JSON.stringify(notes));
     displayCount();
     displayNotes();
 }
@@ -62,11 +84,9 @@ function displayNotes(){
                     <p>${note.category}</p>
                 </div>
                 <div class="edit-section" hidden>
-                    <input type="text" name="js-edit-text" id="js-edit-text">
-                    <button id="js-submit-btn" data-index="${index}">Submit</button>
                 </div>
                 <div class="changes-btns">
-                    <button class="js-edit-btn data-index="${index}">Edit</button>
+                    <button class="js-edit-btn" data-index="${index}">Edit</button>
                     <button class="js-delete-btn" data-index="${index}">Delete</button>
                 </div>
             </div>
