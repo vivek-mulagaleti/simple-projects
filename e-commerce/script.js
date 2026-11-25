@@ -58,7 +58,7 @@ function calculateCounts() {
   let totalCartValue = 0;
 
   cart.forEach((cartItems) => {
-    totalCartValue += cartItems.price;
+    totalCartValue += cartItems.price*cartItems.quantity;
   });
 
   cartValue.innerHTML = totalCartValue;
@@ -74,8 +74,15 @@ addToCartBtn.addEventListener("click", (event) => {
       return item.id === id;
     });
 
-    cart.push(product);
-    console.log(cart);
+    if(cart.find((item)=>{
+        return item.id===product.id;
+    })){
+        cart[cart.indexOf(product)].quantity++;
+    }
+    else{
+        product.quantity=1;
+        cart.push(product);
+    }
   }
 
   displayCart();
@@ -94,6 +101,9 @@ function displayCart() {
                     <div class="cart-item-description">
                         <h3 class="cart-item-title">${cartItems.title}</h3>
                         <p class="cart-item-price">${cartItems.price}</p>
+                        <button class="decresae-quantity" data-id="${cartItems.id}">-</button>
+                        <p class="cart-quantity">${cartItems.quantity}</p>
+                        <button class="increse-quantity" data-id="${cartItems.id}">+</button>
                     </div>
                     <button class="js-product-delete-btn" data-id="${cartItems.id}">delete</button>
                 </div>
@@ -102,6 +112,43 @@ function displayCart() {
     cartSection.innerHTML = cartList;
   }
 }
+
+const increaseBtn=document.querySelector(".js-cart-items");
+increaseBtn.addEventListener("click",(event)=>{
+    if(event.target.classList.contains("increse-quantity")){
+        const id=Number(event.target.dataset.id);
+
+        const product=cart.find((item)=>{
+            return item.id===id;
+        });
+
+        cart[cart.indexOf(product)].quantity++;
+    }
+    displayCart();
+    calculateCounts();
+})
+
+
+const decreaseBtn=document.querySelector(".js-cart-items");
+decreaseBtn.addEventListener("click",(event)=>{
+    if(event.target.classList.contains("decresae-quantity")){
+        const id=Number(event.target.dataset.id);
+
+        const product=cart.find((item)=>{
+            return item.id===id;
+        });
+        const index=cart.indexOf(product)
+
+        if(cart[index].quantity===1){
+            cart.splice(index, 1);
+        }
+        else{
+            cart[index].quantity--;
+        }
+    }
+    displayCart();
+    calculateCounts();
+})
 
 const deleteFromCart = document.querySelector(".js-cart-items");
 deleteFromCart.addEventListener("click", (event) => {
