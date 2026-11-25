@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E-commerce Shopping Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <div class="hero-section">
+        <div class="count-section">
+            <div id="total-products-count">
+                <h3>Products</h3>
+                <p id="js-total-products-count"></p>
+            </div>
+
+            <div id="total-cart-items">
+                <h3>Cart items</h3>
+                <p id="js-total-cart-items"></p>
+            </div>
+
+            <div id="total-cart-value">
+                <h3>Cart value</h3>
+                <p id="js-total-cart-value"></p>
+            </div>
+        </div>
+
+        <div class="search-filter-section">
+            <div class="js-search-section">
+                <input type="text" name="search-item" id="search-item" placeholder="Search Product">
+                <button id="js-search-btn">Search</button>
+            </div>
+
+            <div class="js-filter-section">
+                <select name="item-type" id="item-type">
+                    <option value="all" selected>All</option>
+                    <option value="men's clothing">men's clothing</option>
+                    <option value="jewelery">jewelery</option>
+                    <option value="electronics">electronics</option>
+                    <option value="women's clothing">women's clothing</option>
+                </select>
+            </div>
+        </div>
+    </div>
+
+    <div class="product-display-section">
+
+    </div>
+
+    <div class="shoping-cart-section">
+        <h2>Shopping Cart</h2>
+        <button id="js-clear-cart-btn">Clear cart</button>
+        <div class="js-cart-items">
+        </div>
+        <h2>Total<span id="js-cart-value"></span></h2>
+    </div>
+</body>
+</html>
